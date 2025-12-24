@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성탄절 설교 인포그래픽 - 베들레헴 에브라다야</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #fdfbf7;
+            --accent-gold: #b08d55;
+            --text-dark: #2c2a26;
+            --text-gray: #595959;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px;
+            background-color: #e6e1d6; /* Outer background */
+            font-family: 'Noto Sans KR', sans-serif;
+            display: flex;
+            justify-content: center;
+        }
+
+        .infographic-container {
+            width: 900px;
+            background-color: var(--bg-color);
+            box-shadow: 0 10px 50px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Decorative Top Bar */
+        .top-bar {
+            width: 100%;
+            height: 15px;
+            background: linear-gradient(90deg, #8c6b38, #d4af37, #8c6b38);
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 80px 40px 60px;
+            width: 100%;
+            background-image: radial-gradient(circle at center, #fffdf5 0%, #f4f0e6 100%);
+            border-bottom: 2px dashed #dcd6c8;
+        }
+
+        .header h1 {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 64px;
+            color: var(--text-dark);
+            margin: 0 0 20px 0;
+            line-height: 1.2;
+        }
+
+        .header .subtitle {
+            font-size: 24px;
+            color: var(--accent-gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 60px 80px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 32px;
+            color: var(--text-dark);
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-gold);
+        }
+
+        /* Scripture Box */
+        .scripture-box {
+            background-color: var(--card-bg);
+            border-left: 5px solid var(--accent-gold);
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .scripture-text {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 22px;
+            line-height: 1.8;
+            color: var(--text-dark);
+            font-style: italic;
+            text-align: center;
+        }
+
+        .scripture-ref {
+            display: block;
+            text-align: right;
+            margin-top: 15px;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        /* Context Grid (3 Columns) */
+        .context-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            width: 100%;
+        }
+
+        .context-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border: 1px solid #efeadd;
+        }
+
+        .context-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #f8f5ed;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--accent-gold);
+            font-size: 28px;
+        }
+
+        .context-item h3 {
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .context-item p {
+            font-size: 15px;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        /* Comparison Section */
+        .comparison-container {
+            display: flex;
+            width: 100%;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .comparison-box {
+            flex: 1;
+            padding: 30px;
+            border-radius: 16px;
+        }
+
+        .comparison-box.human {
+            background-color: #f0f0f0;
+            text-align: right;
+        }
+
+        .comparison-box.god {
+            background-color: #fff9eb; /* Light Gold tint */
+            border: 2px solid var(--accent-gold);
+            text-align: left;
+        }
+
+        .comparison-label {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+            color: #888;
+        }
+
+        .comparison-box.god .comparison-label {
+            color: var(--accent-gold);
+        }
+
+        .comparison-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        /* Core Message Circle */
+        .core-message-section {
+            background-color: var(--text-dark);
+            color: #fff;
+            text-align: center;
+            width: 100%;
+            padding: 80px 40px;
+        }
+
+        .core-message-section .section-title {
+            color: #fff;
+        }
+
+        .core-message-section .section-title::after {
+            background-color: #fff;
+        }
+
+        .big-statement {
+            font-size: 36px;
+            font-family: 'Noto Serif KR', serif;
+            line-height: 1.4;
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        /* Poem Section */
+        .poem-section {
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            background-color: #fff;
+            width: 80%;
+            margin: 40px 0;
+            padding: 50px;
+            border: 1px solid #e0dacc;
+            box-shadow: 10px 10px 0px rgba(176, 141, 85, 0.2);
+            position: relative;
+        }
+
+        .poem-section::before {
+            content: "\f10d";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 40px;
+            color: #e0dacc;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            background: #fff;
+            padding: 0 10px;
+        }
+
+        .poem-content {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 18px;
+            line-height: 2;
+            text-align: center;
+            color: #444;
+        }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            background-color: #1a1917;
+            padding: 40px;
+            text-align: center;
+            color: #888;
+        }
+
+        .footer-logo {
+            font-family: 'Noto Serif KR', serif;
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        /* Connector Line */
+        .connector {
+            width: 2px;
+            height: 40px;
+            background-color: #dcd6c8;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="infographic-container">
+        <!-- Top Decoration -->
+        <div class="top-bar"></div>
+
+        <!-- Header -->
+        <div class="header">
+            <div class="subtitle">Christmas 2025 Sermon</div>
+            <h1>베들레헴 에브라다야</h1>
+            <p style="font-size: 18px; color: #666; margin-top: 10px;">라온동행교회 성탄 감사 예배</p>
+        </div>
+
+        <!-- Section 1: The Scripture -->
+        <div class="section">
+            <div class="section-title">예언의 말씀</div>
+            <div class="scripture-box">
+                <p class="scripture-text">
+                    "베들레헴 에브라다야 너는 유다 족속 중에 작을지라도<br>
+                    이스라엘을 다스릴 자가 네게서 내게로 나올 것이라<br>
+                    그의 근본은 상고에, 영원에 있느니라"
+                </p>
+                <span class="scripture-ref">미가 5:2</span>
+            </div>
+        </div>
+
+        <div class="connector"></div>
+
+        <!-- Section 2: The Context (Problem) -->
+        <div class="section" style="background-color: #faf8f4;">
+            <div class="section-title">2025년 성탄의 풍경</div>
+            <div class="context-grid">
+                <div class="context-item">
+                    <div class="context-icon"><i class="fa-solid fa-music"></i></div>
+                    <h3>사라진 캐롤</h3>
+                    <p>저작권과 경직된 분위기로 거리에서 캐롤이 사라짐</p>
+                </div>
+                <div class="context-item">
+                    <div class="context-icon"><i class="fa-solid fa-arrow-trend-down"></i></div>
+                    <h3>경제적 한파</h3>
+                    <p>팍팍해진 삶과<br>마음의 여유 상실</p>
+                </div>
+                <div class="context-item">
+                    <div class="context-icon"><i class="fa-solid fa-cloud"></i></div>
+                    <h3>잊혀진 주인공</h3>
+                    <p>분주함 속에 외면당하는 예수님의 탄생</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="connector"></div>
+
+        <!-- Section 3: The Contrast -->
+        <div class="section">
+            <div class="section-title">기대 vs 현실</div>
+            <div class="comparison-container">
+                <!-- Human Side -->
+                <div class="comparison-box human">
+                    <span class="comparison-label">사람들의 기대</span>
+                    <div class="comparison-title">화려함, 대도시</div>
+                    <p style="font-size: 15px; color: #666; line-height: 1.6;">
+                        "나사렛에서 무슨 선한 것이?"<br>
+                        메시아는 왕궁이나 큰 도시에서<br>
+                        멋지게 등장할 것이라 생각함
+                    </p>
+                </div>
+                
+                <!-- Divider Icon -->
+                <div style="font-size: 30px; color: #dcd6c8;"><i class="fa-solid fa-xmark"></i></div>
+
+                <!-- God Side -->
+                <div class="comparison-box god">
+                    <span class="comparison-label">하나님의 방법</span>
+                    <div class="comparison-title">작은 베들레헴</div>
+                    <p style="font-size: 15px; color: #444; line-height: 1.6;">
+                        가장 작고 소외된 땅.<br>
+                        낮고 천한 말구유.<br>
+                        <strong>가장 낮은 곳에서 시작된 구원.</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Core Message (Dark Background) -->
+        <div class="core-message-section">
+            <div class="section-title">성탄의 진정한 의미</div>
+            <p class="big-statement">
+                성탄절은 단순한 생일 축하가 아닙니다.<br>
+                <span class="highlight">하나님이 우리를 위해 오셨다</span>는<br>
+                복음을 기억하는 시간입니다.
+            </p>
+            <div style="font-size: 16px; opacity: 0.8; margin-top: 30px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.8;">
+                세상이 성탄의 의미를 잊고 외면하더라도,<br>
+                우리는 우리의 마음을 '베들레헴'으로 만들어 주님을 모셔야 합니다.<br>
+                내 삶의 주인공 자리를 다시 예수님께 돌려드립시다.
+            </div>
+        </div>
+
+        <!-- Section 5: The Poem -->
+        <div class="section">
+            <div class="section-title">헌시</div>
+            <div class="poem-section">
+                <h3 style="text-align: center; margin-bottom: 30px; font-family: 'Noto Serif KR'; color: #b08d55;">마리아의 고백</h3>
+                <div class="poem-content">
+                    나의 안식처에 천사가 들어와 낯선 공간이 되었다.<br>
+                    놀라운 만남은 나의 생각과 달랐다.<br><br>
+                    나의 마음은 천사의 소식에 두려움에 빠졌다.<br>
+                    어찌 나 같은 가난한 여자가?<br><br>
+                    나의 몸은 성령의 축복으로 잉태했다.<br>
+                    "온 백성에게 큰 기쁨"을 품었다.<br><br>
+                    나의 품에 세상의 구주가 누워 있었다.<br>
+                    이 작은 아기가 세상을 구원하시리
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-logo">Merry Christmas</div>
+            <p>2025. 12. 25. | 라온동행교회</p>
+            <p style="font-size: 12px; margin-top: 10px;">쉬운목사 이광복</p>
+        </div>
+    </div>
+
+</body>
+</html>
