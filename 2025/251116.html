@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시편 103편 - 감사의 본질과 하나님의 지속적인 은혜</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        // Lucide 아이콘 대체 (간단한 이모지 사용)
+        const Heart = ({ className }) => <span className={className} style={{fontSize: '2rem'}}>💖</span>;
+        const Sparkles = ({ className }) => <span className={className} style={{fontSize: '2rem'}}>✨</span>;
+        const Gift = ({ className }) => <span className={className} style={{fontSize: '2rem'}}>🎁</span>;
+        const Crown = ({ className }) => <span className={className} style={{fontSize: '2rem'}}>👑</span>;
+        const Calendar = ({ className }) => <span className={className} style={{fontSize: '2rem'}}>📅</span>;
+
+        function Psalm103Infographic() {
+            const [selectedSection, setSelectedSection] = useState(null);
+
+            const graceActions = [
+                { 
+                    icon: Heart, 
+                    korean: "용서", 
+                    hebrew: "살라흐 (סָלַח)", 
+                    meaning: "하나님은 우리의 죄를 계속해서 용서하시는 분",
+                    verse: "시편 103:3",
+                    color: "bg-red-500"
+                },
+                { 
+                    icon: Sparkles, 
+                    korean: "치유", 
+                    hebrew: "라파 (רָפָא)", 
+                    meaning: "하나님은 우리의 질병을 계속해서 치유하시는 분",
+                    verse: "시편 103:3",
+                    color: "bg-green-500"
+                },
+                { 
+                    icon: Gift, 
+                    korean: "구속", 
+                    hebrew: "가알 (גָּאַל)", 
+                    meaning: "하나님은 우리를 파멸에서 계속해서 구속하시는 분",
+                    verse: "시편 103:4",
+                    color: "bg-blue-500"
+                },
+                { 
+                    icon: Crown, 
+                    korean: "관 씌움", 
+                    hebrew: "아타르 (עָטַר)", 
+                    meaning: "하나님은 인자와 긍휼로 계속해서 관을 씌우시는 분",
+                    verse: "시편 103:4",
+                    color: "bg-purple-500"
+                },
+                { 
+                    icon: Heart, 
+                    korean: "만족", 
+                    hebrew: "사바 (שָׂבַע)", 
+                    meaning: "하나님은 좋은 것으로 우리의 소원을 계속해서 만족시키시는 분",
+                    verse: "시편 103:5",
+                    color: "bg-amber-500"
+                }
+            ];
+
+            const timeline = [
+                { year: 1904, event: "선교감사일", date: "11월 10일", description: "서경조 장로가 선교사 입국일 기준으로 제안" },
+                { year: 1914, event: "날짜 변경", date: "11월 둘째 주일 수요일", description: "날짜가 수요일로 변경됨" },
+                { year: 1921, event: "추수감사주일", date: "11월 셋째 주일", description: "장로회·감리회 연합협의회에서 명칭 변경" }
+            ];
+
+            return (
+                <div className="min-h-screen bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 p-4 md:p-8">
+                    <div className="max-w-6xl mx-auto">
+                        
+                        {/* 헤더 */}
+                        <div className="text-center mb-8 md:mb-12">
+                            <h1 className="text-3xl md:text-5xl font-bold text-amber-900 mb-4">
+                                시편 103편 1-5절
+                            </h1>
+                            <h2 className="text-xl md:text-3xl text-amber-800 mb-2">감사의 본질과 하나님의 지속적인 은혜</h2>
+                            <div className="inline-block bg-white px-6 py-3 rounded-full shadow-lg mt-4">
+                                <p className="text-lg md:text-xl text-amber-700 font-semibold">추수감사주일 설교</p>
+                            </div>
+                        </div>
+
+                        {/* 핵심 메시지 */}
+                        <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-8 mb-8 md:mb-12 border-4 border-amber-200">
+                            <div className="text-center">
+                                <h3 className="text-xl md:text-2xl font-bold text-amber-900 mb-6">내 영혼아 여호와를 송축하라</h3>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div className="bg-red-50 p-6 rounded-xl">
+                                        <p className="text-lg font-semibold text-red-800 mb-2">❌ 인간의 경향</p>
+                                        <p className="text-red-700">원수는 돌에 새기고<br/>은혜는 물에 새긴다</p>
+                                    </div>
+                                    <div className="bg-green-50 p-6 rounded-xl">
+                                        <p className="text-lg font-semibold text-green-800 mb-2">✅ 마땅한 태도</p>
+                                        <p className="text-green-700">원수는 물에 새기고<br/>은혜는 돌에 새긴다</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 추수감사주일 역사 타임라인 */}
+                        <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-8 mb-8 md:mb-12">
+                            <h3 className="text-2xl md:text-3xl font-bold text-amber-900 mb-8 text-center">
+                                한국 추수감사주일의 역사
+                            </h3>
+                            <div className="relative">
+                                {/* 타임라인 선 */}
+                                <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-amber-300"></div>
+                                
+                                {timeline.map((item, index) => (
+                                    <div key={index} className="relative mb-12 last:mb-0">
+                                        <div className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+                                            <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-4 md:pr-8' : 'text-left pl-4 md:pl-8'}`}>
+                                                <div className="bg-amber-100 p-4 md:p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                                                    <p className="text-2xl md:text-3xl font-bold text-amber-900 mb-2">{item.year}</p>
+                                                    <p className="text-lg md:text-xl font-semibold text-amber-800 mb-2">{item.event}</p>
+                                                    <p className="text-amber-700 font-medium mb-2">{item.date}</p>
+                                                    <p className="text-sm text-amber-600">{item.description}</p>
+                                                </div>
+                                            </div>
+                                            <div className="w-2/12 flex justify-center">
+                                                <div className="w-6 h-6 bg-amber-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                                            </div>
+                                            <div className="w-5/12"></div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* 5가지 지속적인 사역 */}
+                        <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-8 mb-8 md:mb-12">
+                            <h3 className="text-2xl md:text-3xl font-bold text-amber-900 mb-4 text-center">
+                                하나님의 5가지 지속적인 사역
+                            </h3>
+                            <p className="text-center text-amber-700 mb-8 text-base md:text-lg">
+                                히브리어 분사형 - 과거, 현재, 미래에 걸쳐 계속되는 하나님의 은혜
+                            </p>
+                            
+                            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+                                {graceActions.map((action, index) => {
+                                    const Icon = action.icon;
+                                    return (
+                                        <div
+                                            key={index}
+                                            onClick={() => setSelectedSection(index)}
+                                            className={`cursor-pointer p-4 md:p-6 rounded-2xl transition-all transform hover:scale-105 ${
+                                                selectedSection === index ? 'shadow-2xl ring-4 ring-amber-400' : 'shadow-lg'
+                                            } ${action.color} bg-opacity-90 hover:bg-opacity-100`}
+                                        >
+                                            <div className="text-center">
+                                                <Icon className="w-8 h-8 md:w-12 md:h-12 mx-auto mb-2 md:mb-4 text-white" />
+                                                <h4 className="text-lg md:text-2xl font-bold text-white mb-1 md:mb-2">{action.korean}</h4>
+                                                <p className="text-xs md:text-sm text-white font-medium">{action.hebrew}</p>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+
+                            {selectedSection !== null && (
+                                <div className="mt-8 p-6 bg-amber-50 rounded-xl border-2 border-amber-200">
+                                    <p className="text-base md:text-lg text-amber-900 mb-2">
+                                        <span className="font-bold">{graceActions[selectedSection].korean}:</span> {graceActions[selectedSection].meaning}
+                                    </p>
+                                    <p className="text-sm text-amber-700 italic">📖 {graceActions[selectedSection].verse}</p>
+                                </div>
+                            )}
+                        </div>
+
+                        {/* 독수리의 갱신 */}
+                        <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl shadow-2xl p-6 md:p-8 mb-8 md:mb-12 text-white">
+                            <div className="text-center">
+                                <h3 className="text-2xl md:text-3xl font-bold mb-6">🦅 청춘을 독수리 같이 새롭게 하심</h3>
+                                <p className="text-lg md:text-xl mb-6">시편 103:5</p>
+                                
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                                    <div className="bg-white bg-opacity-20 p-6 rounded-xl backdrop-blur">
+                                        <h4 className="text-xl font-bold mb-3">❌ 오해</h4>
+                                        <p className="text-base md:text-lg">과거의 젊음으로 돌아가는 '회귀'</p>
+                                    </div>
+                                    <div className="bg-white bg-opacity-20 p-6 rounded-xl backdrop-blur">
+                                        <h4 className="text-xl font-bold mb-3">✅ 진정한 의미</h4>
+                                        <p className="text-base md:text-lg">독수리의 털갈이처럼 영적으로 새롭게 됨</p>
+                                    </div>
+                                </div>
+
+                                <div className="mt-8 bg-white bg-opacity-20 p-6 rounded-xl backdrop-blur">
+                                    <p className="text-base md:text-lg mb-4 font-semibold">관련 성경 구절</p>
+                                    <div className="space-y-2 text-left text-sm md:text-base">
+                                        <p>📖 출애굽기 19:4 - "독수리 날개로 너희를 업어 내게로 인도하였음"</p>
+                                        <p>📖 이사야 40:31 - "독수리가 날개치며 올라감 같을 것이요"</p>
+                                        <p>📖 고린도후서 4:16 - "속사람은 날로 새로워지도다"</p>
+                                        <p>📖 에베소서 4:24 - "새 사람을 입으라"</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 결론 및 적용 */}
+                        <div className="bg-white rounded-3xl shadow-2xl p-6 md:p-8 mb-8">
+                            <h3 className="text-2xl md:text-3xl font-bold text-amber-900 mb-6 text-center">
+                                추수감사주일의 의미
+                            </h3>
+                            
+                            <div className="space-y-6">
+                                <div className="bg-amber-50 p-6 rounded-xl">
+                                    <h4 className="text-lg md:text-xl font-bold text-amber-900 mb-3">🙏 본래의 의미</h4>
+                                    <p className="text-amber-800 text-base md:text-lg">
+                                        단순한 수확 감사를 넘어, 한국 교회의 선교 역사와 복음이 전해진 것에 대한 감사
+                                    </p>
+                                </div>
+
+                                <div className="bg-green-50 p-6 rounded-xl">
+                                    <h4 className="text-lg md:text-xl font-bold text-green-900 mb-3">💭 핵심 질문</h4>
+                                    <p className="text-green-800 text-base md:text-lg">
+                                        "우리는 은혜를 기억하고 있습니까?<br/>
+                                        혹, 우리의 상황으로 인해 은혜를 잊고 살고 있지는 않습니까?"
+                                    </p>
+                                </div>
+
+                                <div className="bg-blue-50 p-6 rounded-xl">
+                                    <h4 className="text-lg md:text-xl font-bold text-blue-900 mb-3">✨ 결단</h4>
+                                    <p className="text-blue-800 text-base md:text-lg">
+                                        받은 은혜에 진심으로 감사하고, 삶의 방향을 온전히 하나님을 찬양하고 그분을 향하도록 결단하는 시간
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* 푸터 */}
+                        <div className="text-center mt-8 md:mt-12 text-amber-800 pb-8">
+                            <p className="text-base md:text-lg font-semibold">라온동행교회 추수감사주일 설교</p>
+                            <p className="text-sm mt-2">시편 103편 1-5절: 감사의 본질과 하나님의 지속적인 은혜</p>
+                        </div>
+
+                    </div>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Psalm103Infographic />);
+    </script>
+</body>
+</html>
