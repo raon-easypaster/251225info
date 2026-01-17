@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>야베스의 기도 - 2026 송구영신예배</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; }
+        .serif { font-family: 'Gowun Batang', serif; }
+        .gradient-bg { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header Section -->
+    <header class="gradient-bg text-white py-20 px-4 text-center relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <i class="fas fa-praying-hands absolute top-10 left-10 text-9xl"></i>
+            <i class="fas fa-bible absolute bottom-10 right-10 text-9xl"></i>
+        </div>
+        <div class="max-w-4xl mx-auto relative z-10">
+            <span class="inline-block py-1 px-3 rounded-full bg-yellow-500 text-black font-bold text-sm mb-4">2026 송구영신예배 메시지</span>
+            <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">야베스의 기도</h1>
+            <p class="text-xl md:text-2xl font-light opacity-90">복을 구하기 전에, 복을 담을 그릇이 되십시오</p>
+            <div class="mt-8">
+                <span class="inline-block border border-white/30 px-4 py-2 rounded-lg backdrop-blur-sm">
+                    <i class="fas fa-book-open mr-2"></i>역대상 4장 9-10절
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bible Verse Section -->
+    <section class="max-w-4xl mx-auto px-4 -mt-10 relative z-20">
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl text-center border-t-4 border-yellow-500">
+            <i class="fas fa-quote-left text-4xl text-slate-200 mb-4 block"></i>
+            <p class="serif text-xl md:text-2xl leading-loose text-slate-700 font-bold break-keep">
+                "야베스가 이스라엘 하나님께 아뢰어 이르되 주께서 내게 복을 주시려거든 나의 지역을 넓히시고 주의 손으로 나를 도우사 나로 환난을 벗어나 내게 근심이 없게 하옵소서 하였더니 하나님이 그가 구하는 것을 허락하셨더라"
+            </p>
+            <i class="fas fa-quote-right text-4xl text-slate-200 mt-4 block"></i>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-6xl mx-auto px-4 py-16 space-y-20">
+
+        <!-- Part 1: Analysis Structure -->
+        <section>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">말씀의 네 가지 기둥</h2>
+                <p class="text-slate-600">우리는 흔히 기도의 내용만 보지만, 성경은 전체를 말하고 있습니다.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100 card-hover">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4 text-xl font-bold">1</div>
+                    <h3 class="text-lg font-bold mb-2">존귀한 자</h3>
+                    <p class="text-sm text-slate-600">야베스는 그의 형제보다 존귀한(Honor) 자였습니다. 이것이 전제조건입니다.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100 card-hover">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mb-4 text-xl font-bold">2</div>
+                    <h3 class="text-lg font-bold mb-2">고통의 이름</h3>
+                    <p class="text-sm text-slate-600">이름의 뜻은 '고통(Pain)'입니다. 그는 고통스러운 운명을 안고 태어났습니다.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-yellow-400 card-hover ring-2 ring-yellow-400 ring-offset-2">
+                    <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mb-4 text-xl font-bold">3</div>
+                    <h3 class="text-lg font-bold mb-2">간절한 기도</h3>
+                    <p class="text-sm text-slate-600">우리가 가장 좋아하는 부분입니다. 지역을 넓히고 환난을 면케 해달라는 간구입니다.</p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-slate-100 card-hover">
+                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-4 text-xl font-bold">4</div>
+                    <h3 class="text-lg font-bold mb-2">응답</h3>
+                    <p class="text-sm text-slate-600">하나님이 그가 구하는 것을 '허락'하셨습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 2: Misunderstanding vs Truth -->
+        <section class="bg-slate-900 rounded-3xl p-8 md:p-16 text-white overflow-hidden relative">
+            <div class="absolute -right-20 -top-20 w-64 h-64 bg-yellow-500 rounded-full blur-3xl opacity-20"></div>
+            <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-500 rounded-full blur-3xl opacity-20"></div>
+            
+            <div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 text-yellow-400">우리의 흔한 오해</h2>
+                    <p class="text-slate-300 leading-relaxed mb-6">
+                        많은 사람들이 야베스의 기도를 "도깨비 방망이"처럼 생각합니다.
+                        <br><br>
+                        <i class="fas fa-times text-red-500 mr-2"></i> "하나님, 복 주세요. 땅 넓혀 주세요."<br>
+                        <i class="fas fa-times text-red-500 mr-2"></i> "원하면 다 들어주신다!"
+                        <br><br>
+                        이것은 마치 달을 보며 비나이다를 외치는 기복신앙과 다를 바가 없습니다. 우리는 기도의 내용(3번)에만 집착하고 있지 않습니까?
+                    </p>
+                </div>
+                <div class="bg-white/10 backdrop-blur-lg p-8 rounded-2xl border border-white/20">
+                    <h2 class="text-3xl font-bold mb-6 text-green-400">성경의 진실</h2>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                            <div>
+                                <strong class="block text-lg">존귀한 삶이 먼저였습니다</strong>
+                                <span class="text-sm text-slate-300">'존귀하다'는 '무겁다(영광스럽다)'는 뜻입니다. 그는 기도를 하기 전에 이미 형제들보다 하나님을 온전히 섬기는 사람이었습니다.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-400 mt-1 mr-3"></i>
+                            <div>
+                                <strong class="block text-lg">운명을 극복한 신앙</strong>
+                                <span class="text-sm text-slate-300">'고통'이라는 이름으로 불렸지만, 그는 이름대로 살지 않고 하나님 안에서 새로운 정체성을 만들었습니다.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Part 3: The Analogy -->
+        <section class="max-w-4xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-blue-600 font-bold tracking-wider text-sm uppercase">Sermon Illustration</span>
+                <h2 class="text-3xl font-bold mt-2">구두 닦는 아이 이야기</h2>
+            </div>
+            
+            <div class="bg-blue-50 rounded-2xl p-8 md:p-12 border-l-8 border-blue-600 flex flex-col md:flex-row items-center gap-8">
+                <div class="flex-shrink-0">
+                    <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-lg text-6xl">
+                        👞
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-3 serif">아버지의 마음을 움직인 것은?</h3>
+                    <p class="text-slate-700 leading-relaxed mb-4">
+                        아이가 용돈을 받기 위해 아빠의 구두를 닦습니다. 사실 광도 안 나고 오히려 더 더러워졌을지도 모릅니다. 하지만 아빠는 기뻐하며 넉넉한 용돈을 줍니다.
+                    </p>
+                    <p class="font-bold text-blue-800 bg-blue-100 inline-block px-4 py-2 rounded-lg">
+                        아빠는 '깨끗한 구두' 때문이 아니라, '아이의 기특한 마음' 때문에 지갑을 엽니다.
+                    </p>
+                    <p class="text-slate-600 mt-4 text-sm">
+                        하나님도 마찬가지입니다. 우리가 완벽해서 응답하시는 게 아닙니다. 하나님을 기쁘시게 하려는 그 마음을 보시고, 우리가 구하는 것 이상으로 채워주십니다.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="text-center py-12">
+            <h2 class="text-3xl md:text-4xl font-black mb-8">2026년, 무엇을 구하시겠습니까?</h2>
+            
+            <div class="max-w-3xl mx-auto grid gap-8">
+                <div class="p-6 bg-white rounded-xl shadow-sm border border-slate-200">
+                    <p class="text-lg text-slate-700 leading-relaxed">
+                        "하나님, 이게 필요해요. 저거 해결해 주세요."<br>
+                        어린아이의 신앙에서 벗어나야 합니다.
+                    </p>
+                </div>
+                
+                <i class="fas fa-arrow-down text-slate-300 text-2xl"></i>
+                
+                <div class="p-8 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-xl shadow-md border border-orange-100">
+                    <p class="serif text-xl md:text-2xl font-bold text-slate-800 leading-relaxed">
+                        "하나님 보시기에 합당한 사람이 되게 하소서.<br>
+                        그리고 주의 일을 감당하기 위해<br>
+                        나의 지경을 넓혀 주옵소서."
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-slate-500">
+                <p>능력이 부족해도 마음이 하나님을 향해 있다면,</p>
+                <p>하나님은 우리의 기대와 소망을 잊지 않으십니다.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="mb-4 text-slate-500 text-sm">Based on 2025.12.31 Sermon Transcript</p>
+            <p class="font-bold text-white mb-2">야베스의 기도</p>
+            <p class="text-xs text-slate-600">
+                광복, 영애, 윤희, 상민, 미경, 상석, 윤정, 동호, 지선, 동현, 성호, 광진, 혜영, 현진, 하연, 준호, 세영, 형주, 유정, 승현, 주예, 승하, 다예, 아란, 지율, 윤준, 윤한
+                <br>모든 성도님들의 기도가 응답받는 한 해가 되기를 소망합니다.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
