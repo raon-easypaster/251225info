@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빛의 갑옷을 입으라 - 라온동행교회 인포그래픽</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #002B5B;
+            --accent: #C5A358;
+            --bg: #F9F5EB;
+            --white: #FFFFFF;
+            --text-main: #1A1A1A;
+            --text-sub: #4A4A4A;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            font-family: 'Noto Sans KR', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 43, 91, 0.85), rgba(0, 43, 91, 0.85)), 
+                        url('https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&q=80&w=1600') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 20px;
+        }
+
+        header h2 { font-size: 1.5rem; color: var(--accent); letter-spacing: 5px; margin-bottom: 20px; font-weight: 300; }
+        header h1 { font-family: 'Noto Serif KR', serif; font-size: clamp(3rem, 8vw, 6rem); margin-bottom: 20px; }
+        header p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; }
+        .scroll-down { position: absolute; bottom: 30px; animation: bounce 2s infinite; font-size: 2rem; color: var(--accent); }
+
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+
+        /* General Section Layout */
+        section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h3 { font-family: 'Noto Serif KR', serif; font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+        .section-title .divider { width: 60px; height: 4px; background: var(--accent); margin: 0 auto; }
+
+        /* Grid Infographic */
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--white); padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-bottom: 6px solid var(--accent); transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); }
+        .card i { font-size: 3rem; color: var(--primary); margin-bottom: 25px; }
+        .card h4 { font-size: 1.5rem; margin-bottom: 15px; color: var(--primary); }
+
+        /* Quote Section */
+        .quote-box { background: var(--primary); color: var(--white); padding: 80px 40px; text-align: center; border-radius: 30px; margin: 60px 0; }
+        .quote-box blockquote { font-family: 'Noto Serif KR', serif; font-size: 1.8rem; font-style: italic; margin-bottom: 30px; line-height: 1.5; }
+        .quote-box cite { font-weight: 700; color: var(--accent); }
+
+        /* Vertical Timeline / Story */
+        .story-flex { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; margin-top: 40px; }
+        .story-text { flex: 1; min-width: 300px; }
+        .story-image { flex: 1; min-width: 300px; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .story-image img { width: 100%; display: block; }
+
+        /* Data Visualization */
+        .stat-wrap { background: var(--white); padding: 60px; border-radius: 30px; margin-top: 40px; }
+        .bar-group { margin-bottom: 40px; }
+        .bar-label { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 700; font-size: 1.2rem; }
+        .bar-bg { background: #eee; height: 30px; border-radius: 15px; overflow: hidden; }
+        .bar-fill { height: 100%; background: var(--primary); display: flex; align-items: center; padding-left: 20px; color: white; font-size: 0.9rem; }
+        .bar-fill.accent { background: var(--accent); }
+
+        /* Comparison Table */
+        .comparison { width: 100%; border-spacing: 0 15px; border-collapse: separate; }
+        .comparison th { padding: 20px; text-align: left; font-size: 1.2rem; color: var(--primary); border-bottom: 2px solid var(--primary); }
+        .comparison td { padding: 25px 20px; background: var(--white); }
+        .comparison td:first-child { border-radius: 15px 0 0 15px; font-weight: 700; width: 25%; }
+        .comparison td:last-child { border-radius: 0 15px 15px 0; color: var(--accent); font-weight: 700; }
+
+        /* Footer */
+        footer { background: var(--primary); color: var(--white); text-align: center; padding: 80px 20px; }
+        footer h2 { font-family: 'Noto Serif KR', serif; font-size: 2.5rem; margin-bottom: 20px; }
+        footer p { opacity: 0.7; margin-bottom: 40px; }
+        .btn-call { display: inline-block; padding: 15px 40px; background: var(--accent); color: var(--white); text-decoration: none; border-radius: 50px; font-weight: 700; transition: 0.3s; }
+        .btn-call:hover { background: #b08e45; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 3rem; }
+            .section-title h3 { font-size: 1.8rem; }
+            .quote-box blockquote { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h2>ROMANS 13:11-14</h2>
+        <h1>빛의 갑옷을 입으라</h1>
+        <p>자다가 깰 때가 되었습니다. 안주를 넘어 성숙과 사명의 자리로 나아가는 라온동행교회 성도들을 위한 영적 가이드</p>
+        <div class="scroll-down"><i class="fa-solid fa-chevron-down"></i></div>
+    </header>
+
+    <!-- 시대의 분별 -->
+    <section id="dispensation">
+        <div class="section-title">
+            <h3>시대를 분별하는 신앙</h3>
+            <div class="divider"></div>
+        </div>
+        <div class="info-grid">
+            <div class="card">
+                <i class="fa-solid fa-hourglass-start"></i>
+                <h4>임박한 하나님 나라</h4>
+                <p>세대주의 신학이 울린 시대적 경종은 우리를 성경 본질로 이끌었습니다. 깨어 있음이 신앙의 시작입니다.</p>
+            </div>
+            <div class="card" style="border-bottom-color: #e74c3c;">
+                <i class="fa-solid fa-person-falling"></i>
+                <h4>현실 안주의 위험</h4>
+                <p>구원의 확신에만 머물러 세상 속 제자의 삶을 외면하지 마십시오. 은혜는 머무름이 아닌 움직임입니다.</p>
+            </div>
+            <div class="card">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>빛의 갑옷</h4>
+                <p>어둠의 일을 벗고 낮과 같이 단정히 행하며 주 예수 그리스도로 옷 입는 결단이 필요합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 안식과 사명 -->
+    <section id="rest" style="background: rgba(197, 163, 88, 0.05);">
+        <div class="section-title">
+            <h3>안식, 그리고 사명</h3>
+            <div class="divider"></div>
+        </div>
+        <div class="quote-box">
+            <blockquote>"게으름은 사명을 피하지만,<br>참된 안식은 사명을 더 깊이 붙잡게 합니다."</blockquote>
+            <cite>시편 23편의 묵상 중에서</cite>
+        </div>
+        <div class="story-flex">
+            <div class="story-text">
+                <h4 style="font-size: 2rem; color: var(--primary); margin-bottom: 20px;">초막 셋을 지으리이까?</h4>
+                <p style="font-size: 1.2rem; margin-bottom: 20px;">변화산 위의 베드로처럼 "여기가 좋사오니"라며 우리만의 초막을 짓고 있지는 않습니까?</p>
+                <p>진정한 신앙은 산 위의 영광에 머무는 것이 아니라, 주신 은혜를 들고 산 아래 고통받는 세상으로 내려가 사명을 감당하는 것입니다.</p>
+            </div>
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800" alt="변화산">
+            </div>
+        </div>
+    </section>
+
+    <!-- 목회적 고백 -->
+    <section id="confession">
+        <div class="section-title">
+            <h3>2025년: 광야의 고백</h3>
+            <div class="divider"></div>
+        </div>
+        <div class="story-flex" style="flex-direction: row-reverse;">
+            <div class="story-text">
+                <h4 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 20px;">카페와 선교, 그 사이의 긴장</h4>
+                <p>재정의 한계와 사역의 정체 속에서도 목회자는 성도들의 삶의 무게를 함께 짊어집니다. 좁은 길은 항상 힘들지만, 그것이 주님이 부르신 길임을 믿습니다.</p>
+                <ul style="margin-top: 20px; list-style: none;">
+                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check color-accent" style="color: var(--accent); margin-right: 10px;"></i> 75% 감소한 납품, 그러나 멈추지 않는 사명</li>
+                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-check color-accent" style="color: var(--accent); margin-right: 10px;"></i> 필리핀과 방글라데시를 향한 선교의 발걸음</li>
+                    <li><i class="fa-solid fa-check color-accent" style="color: var(--accent); margin-right: 10px;"></i> 대접받기보다 섬기기를 두려워하는 긴장감</li>
+                </ul>
+            </div>
+            <div class="story-image">
+                <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=800" alt="카페 사역">
+            </div>
+        </div>
+    </section>
+
+    <!-- 헌신과 데이터 -->
+    <section id="devotion" style="background: var(--white);">
+        <div class="section-title">
+            <h3>거룩한 예배와 헌신</h3>
+            <div class="divider"></div>
+        </div>
+        
+        <div class="stat-wrap">
+            <h4 style="text-align: center; margin-bottom: 40px; color: var(--primary);">도파민의 시대, 우리의 결단</h4>
+            <p style="text-align: center; margin-bottom: 40px;">세상에는 수많은 유혹이 있지만, 예배의 자리에 나오는 것은 성령의 역사입니다.</p>
+            
+            <div class="bar-group">
+                <div class="bar-label"><span>세상의 유혹 (도파민)</span> <span>33%</span></div>
+                <div class="bar-bg"><div class="bar-fill accent" style="width: 33%;">유행, 유흥, 편리함</div></div>
+            </div>
+            <div class="bar-group">
+                <div class="bar-label"><span>예배를 향한 결단</span> <span>100%</span></div>
+                <div class="bar-bg"><div class="bar-fill" style="width: 100%;">성령의 인도하심</div></div>
+            </div>
+        </div>
+
+        <div style="margin-top: 60px;">
+            <table class="comparison">
+                <thead>
+                    <tr>
+                        <th>헌신의 기준</th>
+                        <th>세상의 시선</th>
+                        <th>하나님의 기쁨</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>헌금의 동기</td>
+                        <td>의무와 강요</td>
+                        <td>진심으로 즐거워함</td>
+                    </tr>
+                    <tr>
+                        <td>가치 평가</td>
+                        <td>경제적 효율성</td>
+                        <td>하나님 나라 확장</td>
+                    </tr>
+                    <tr>
+                        <td>영적 상태</td>
+                        <td>취미 생활</td>
+                        <td>부르심에 대한 응답</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 10할의 신앙 -->
+    <section id="target">
+        <div class="section-title">
+            <h3>영적 대제사장의 타율</h3>
+            <div class="divider devider"></div>
+        </div>
+        <div class="stat-wrap" style="text-align: center; border: 2px dashed var(--accent);">
+            <i class="fa-solid fa-baseball-bat-ball" style="font-size: 4rem; color: var(--primary); margin-bottom: 20px;"></i>
+            <h4 style="font-size: 2rem; margin-bottom: 20px;">야구는 3할이면 잘하지만,<br><span style="color: var(--accent);">설교와 삶은 10할이어야 합니다.</span></h4>
+            <p style="max-width: 800px; margin: 0 auto;">우리의 삶이 누군가에게는 마지막으로 보는 그리스도인의 모습일 수 있기 때문입니다. 늘 거룩한 긴장감 속에 머무십시오.</p>
+        </div>
+    </section>
+
+    <!-- Footer / Call to Action -->
+    <footer>
+        <h2>성장을 위한 부르심</h2>
+        <p>어제보다 오늘 더, 오늘보다 내일 더 성장하는 성숙한 그리스도인이 됩시다.</p>
+        <a href="#" class="btn-call">라온동행교회와 함께하기</a>
+        <div style="margin-top: 60px; font-size: 0.9rem; opacity: 0.5;">
+            &copy; 2025 라온동행교회 | 빛의 갑옷을 입으라 인포그래픽
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links (if any)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple Fade-in effect on scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section, .card, .stat-wrap').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.8s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
