@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비주얼 매거진: 일꾼 뵈뵈</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&family=Song+Myung&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #1a2a3a; /* Deep Navy */
+            --primary-dark: #0f1922;
+            --accent-color: #d4af37; /* Gold */
+            --accent-light: #f3e5ab;
+            --text-main: #2c2c2c;
+            --text-light: #f4f4f4;
+            --paper-bg: #fdfbf7;
+            --overlay-dark: rgba(0, 0, 0, 0.6);
+            --glass-bg: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--paper-bg);
+            color: var(--text-main);
+            line-height: 1.7;
+            /* 종이 질감 노이즈 효과 */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+
+        /* 컨테이너 */
+        .magazine-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ① Cinematic Header */
+        .header {
+            position: relative;
+            height: 100vh;
+            max-height: 800px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), var(--primary-dark));
+            z-index: 2;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+        }
+
+        .header-tag {
+            font-family: 'Song Myung', serif;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .main-title {
+            font-family: 'Gowun Batang', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            line-height: 1.2;
+        }
+
+        .bible-box {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-family: 'Song Myung', serif;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* ② Intro & Hook */
+        .intro-section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .divider {
+            width: 2px;
+            height: 60px;
+            background: var(--accent-color);
+            margin: 0 auto;
+        }
+
+        /* ③ Visual Sermon Body */
+        .chapter {
+            padding: 0 2rem 4rem 2rem;
+        }
+
+        .chapter-thumb {
+            width: 100%;
+            height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .chapter-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .chapter-thumb:hover img {
+            transform: scale(1.05);
+        }
+
+        .chapter-thumb::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .chapter-num {
+            font-family: 'Gowun Batang', serif;
+            font-size: 4rem;
+            color: rgba(0,0,0,0.05);
+            line-height: 0.5;
+            margin-bottom: 1rem;
+            position: absolute;
+            transform: translate(-10px, -20px);
+            z-index: -1;
+        }
+        
+        .chapter-title {
+            font-family: 'Gowun Batang', serif;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .sermon-text {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+            word-break: keep-all;
+        }
+
+        .highlight {
+            background: linear-gradient(to top, var(--accent-light) 40%, transparent 40%);
+            font-weight: 700;
+            padding: 0 2px;
+        }
+
+        .story-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .story-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: block;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* ④ Graphic Key Message */
+        .key-message-card {
+            margin: 2rem;
+            height: 400px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .key-message-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .key-message-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 42, 58, 0.9), rgba(212, 175, 55, 0.4));
+            z-index: 2;
+        }
+
+        .key-content {
+            position: relative;
+            z-index: 3;
+            padding: 2rem;
+        }
+
+        .badge {
+            background: var(--accent-color);
+            color: var(--primary-dark);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .message-main {
+            font-family: 'Gowun Batang', serif;
+            font-size: 1.8rem;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        /* ⑤ Action Plan */
+        .action-section {
+            padding: 4rem 2rem;
+            background-color: #fff;
+        }
+
+        .action-title {
+            text-align: center;
+            font-family: 'Gowun Batang', serif;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            transition: transform 0.2s;
+        }
+
+        .checklist-item:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+        }
+
+        .check-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        /* ⑥ Prayer & Footer */
+        .prayer-section {
+            padding: 4rem 2rem;
+            background-color: #f4f1ea; /* Old paper color */
+            text-align: center;
+            background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1v1H5V0zM0 5h1v1H0V5z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .prayer-box {
+            border: 1px solid rgba(0,0,0,0.1);
+            padding: 2rem;
+            border-radius: 4px; /* Paper like */
+            position: relative;
+        }
+
+        .prayer-box::before {
+            content: '“';
+            font-family: serif;
+            font-size: 4rem;
+            color: var(--accent-color);
+            opacity: 0.3;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+        }
+
+        .footer {
+            background-color: var(--primary-dark);
+            color: #888;
+            padding: 3rem 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        .profile-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* 반응형 타이포 조정 */
+        @media (max-width: 400px) {
+            .main-title { font-size: 2.5rem; }
+            .chapter-title { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="magazine-container">
+        
+        <!-- ① Cinematic Header -->
+        <header class="header">
+            <!-- 배경: 로마 가도 혹은 고대의 서신 느낌 -->
+            <img src="https://images.unsplash.com/photo-1469532832549-0c6f50247f12?auto=format&fit=crop&w=800&q=80" alt="Ancient Letter Path" class="header-bg">
+            <div class="header-overlay"></div>
+            
+            <div class="header-content">
+                <span class="header-tag">VISUAL SERMON VOL.32</span>
+                <h1 class="main-title">일꾼<br>뵈뵈</h1>
+                <div class="bible-box">
+                    <p>내가 겐그레아 교회의 일꾼으로 있는<br>우리 자매 뵈뵈를 너희에게 추천하노니<br>(로마서 16:1-2)</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- ② Intro & Hook -->
+        <section class="intro-section">
+            <p class="intro-text">
+                로마서 16장은 단순한 인사말의 나열이 아닙니다.<br>
+                그 안에는 <b>천 킬로미터의 헌신</b>과<br>
+                <b>복음을 향한 무게</b>가 담겨 있습니다.
+            </p>
+            <div class="divider"></div>
+        </section>
+
+        <!-- ③ Visual Sermon Body -->
+        
+        <!-- Chapter 1 -->
+        <section class="chapter">
+            <div class="chapter-thumb">
+                <!-- 거친 바다/항해 이미지 -->
+                <img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80" alt="Voyage Journey">
+            </div>
+            <span class="chapter-num">01</span>
+            <h2 class="chapter-title">종이 한 장의 무게</h2>
+            
+            <p class="sermon-text">
+                바울이 로마서 16장에 수많은 이름을 기록한 것에는 분명한 이유가 있습니다. 2천 년 전, 스마트폰도 통신도 없던 시절, 서신서는 단순한 편지가 아니었습니다.
+            </p>
+            <div class="story-box">
+                <span class="story-title">COST OF GOSPEL</span>
+                <p class="sermon-text" style="font-size: 0.95rem; margin-bottom:0;">
+                    로마서 한 통을 보내기 위해 필요한 것:<br>
+                    • 고린도에서 로마까지 1,400km의 여정<br>
+                    • 왕복 최소 3~5주의 시간<br>
+                    • 현재 가치로 약 1,000만 원 이상의 비용
+                </p>
+            </div>
+            <p class="sermon-text">
+                이 편지는 종이 한 장의 무게가 아닙니다. <span class="highlight">한 영혼의 목숨 값과 수개월의 땀방울이 담긴 '헌신으로 쓴 복음'입니다.</span> 뵈뵈는 그 엄청난 무게를 짊어지고 길을 떠난 것입니다.
+            </p>
+        </section>
+
+        <!-- Chapter 2 -->
+        <section class="chapter">
+            <div class="chapter-thumb">
+                <!-- 손을 잡거나 함께하는 이미지 (수정됨: 공동체) -->
+                <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80" alt="Community Together">
+            </div>
+            <span class="chapter-num">02</span>
+            <h2 class="chapter-title">숨겨진 영웅들</h2>
+            
+            <p class="sermon-text">
+                로마서 16장에는 27명의 이름이 등장합니다. 노예, 귀족, 여성, 남성... 이 다양한 명단은 교회가 계급을 넘어선 파격적인 연합 공동체였음을 보여줍니다.
+            </p>
+            <p class="sermon-text">
+                오늘날 20%가 80%를 먹여 살린다는 파레토 법칙이 세상엔 통용되지만, 교회는 다릅니다. 몸의 80%가 마비되어 있다면 건강한 몸이라 할 수 있을까요? <span class="highlight">그리스도의 몸 된 교회는 모든 지체가 각자의 자리에서 움직일 때 비로소 생명력이 넘칩니다.</span>
+            </p>
+        </section>
+
+        <!-- ④ Graphic Key Message -->
+        <section class="key-message-card">
+            <img src="https://images.unsplash.com/photo-1518552684883-207d2c94977b?auto=format&fit=crop&w=800&q=80" alt="Light Silhouette" class="key-message-bg">
+            <div class="key-message-overlay"></div>
+            <div class="key-content">
+                <span class="badge">One Message</span>
+                <p class="message-main">
+                    "누가 이 시대의 교회를 위해<br>
+                    뵈뵈처럼 든든한<br>
+                    울타리가 되어주겠느냐?"
+                </p>
+            </div>
+        </section>
+
+        <!-- Chapter 3 -->
+        <section class="chapter" style="padding-top: 2rem;">
+            <div class="chapter-thumb">
+                <!-- 돕는 손길 이미지 (수정됨: 섬김) -->
+                <img src="https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?auto=format&fit=crop&w=800&q=80" alt="Helping Hand">
+            </div>
+            <span class="chapter-num">03</span>
+            <h2 class="chapter-title">디아코노스 & 프로스타티스</h2>
+            
+            <p class="sermon-text">
+                바울은 뵈뵈를 두 가지로 소개합니다. 첫째, <b>'일꾼(디아코노스)'</b>입니다. 이는 바울이 자신을 소개할 때 쓴 단어와 같습니다. 그녀는 단순한 심부름꾼이 아니라 말씀 사역자였습니다.
+            </p>
+            <p class="sermon-text">
+                둘째, <b>'보호자(프로스타티스)'</b>입니다. 이는 법적, 재정적 후원자를 뜻합니다. 그녀는 자신의 재물과 삶을 바쳐 바울과 교회의 '지붕'이 되어주었습니다.
+            </p>
+            <p class="sermon-text">
+                <span class="highlight">여러분은 구경꾼입니까, 아니면 21세기의 뵈뵈입니까?</span> 오늘 주님은 우리를 영광스러운 동역의 자리로 부르십니다.
+            </p>
+        </section>
+
+        <!-- ⑤ Action Plan -->
+        <section class="action-section">
+            <h3 class="action-title">ACTION PLAN</h3>
+            
+            <div class="checklist-item">
+                <div class="check-icon">✓</div>
+                <div>교회의 '구경꾼'이 아닌 '참여자' 되기</div>
+            </div>
+            <div class="checklist-item">
+                <div class="check-icon">✓</div>
+                <div>내가 감당할 수 있는 작은 '보호자' 역할 찾기</div>
+            </div>
+            <div class="checklist-item">
+                <div class="check-icon">✓</div>
+                <div>나의 리더와 지체들을 위해 '동역의 기도' 하기</div>
+            </div>
+        </section>
+
+        <!-- ⑥ Prayer & Footer -->
+        <section class="prayer-section">
+            <div class="prayer-box">
+                <div style="font-size: 2rem; margin-bottom: 1rem;">🙏</div>
+                <h4 style="font-family: 'Gowun Batang'; margin-bottom: 1rem;">오늘의 기도</h4>
+                <p class="sermon-text" style="text-align: center;">
+                    주님, 우리 교회가 헌신의 땀방울로 세워지는<br>
+                    건강한 공동체가 되게 하소서.<br>
+                    나의 필요보다 하나님 나라를 먼저 구하며,<br>
+                    서로에게 든든한 보호자가 되는<br>
+                    '뵈뵈'의 삶을 살게 하소서.<br>
+                    예수님의 이름으로 기도합니다. 아멘.
+                </p>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <span class="profile-icon">⛪</span>
+            <p>라온동행교회 주일예배 설교</p>
+            <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 0.5rem;">Designed for Visual Meditation</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
