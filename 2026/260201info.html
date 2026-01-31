@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>진짜 슈퍼스타 - 로마서 16:3-16</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@300;400;700&family=Song+Myung&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a2a2a; /* Deep Green-ish Navy */
+            --accent-gold: #c5a059;
+            --text-main: #2c3e50;
+            --text-muted: #576574;
+            --bg-paper: #f9f7f2;
+            --overlay: rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-paper);
+            background-image: url('https://www.transparenttextures.com/patterns/natural-paper.png');
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* 1. Cinematic Header */
+        header {
+            position: relative;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            background: url('https://images.unsplash.com/photo-1506318137071-a8e063b4b519?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+        }
+
+        .header-content h1 {
+            font-family: 'Gowun Batang', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            word-break: keep-all;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .scripture-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            font-family: 'Song Myung', serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        /* 2. Intro & Hook */
+        .intro-section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .intro-section h2 {
+            font-family: 'Gowun Batang', serif;
+            color: var(--accent-gold);
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+
+        .divider {
+            width: 40px;
+            height: 2px;
+            background: var(--accent-gold);
+            margin: 2rem auto;
+        }
+
+        /* 3. Visual Sermon Body */
+        section {
+            padding: 0 2rem 4rem;
+        }
+
+        .chapter-num {
+            font-family: 'Song Myung', serif;
+            font-size: 4rem;
+            color: rgba(197, 160, 89, 0.2);
+            display: block;
+            margin-bottom: -1.5rem;
+        }
+
+        .chapter-title {
+            font-family: 'Gowun Batang', serif;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 15px;
+        }
+
+        .sermon-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(197, 160, 89, 0.2) 0%, rgba(197, 160, 89, 0.2) 100%);
+            padding: 0 2px;
+            font-weight: 700;
+        }
+
+        .story-box {
+            background: #fdfaf3;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            font-style: italic;
+            border: 1px solid #efe3d0;
+        }
+
+        .story-box::before {
+            content: '"';
+            font-family: 'Song Myung', serif;
+            font-size: 4rem;
+            color: var(--accent-gold);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        /* 4. Graphic Key Message */
+        .key-message-card {
+            background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=80') center/cover;
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            color: white;
+            text-align: center;
+            position: relative;
+            margin: 4rem 0;
+        }
+
+        .key-message-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(26, 42, 42, 0.85);
+            border-radius: 12px;
+        }
+
+        .key-message-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        /* 5. Action Plan */
+        .action-plan {
+            background: #fff;
+            padding: 3rem 2rem;
+        }
+
+        .action-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border: 1px solid #f0f0f0;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .action-item:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-3px);
+        }
+
+        .checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 6px;
+            margin-right: 15px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 6. Prayer & Footer */
+        footer {
+            padding: 4rem 2rem;
+            background: #f4f4f4;
+            text-align: center;
+        }
+
+        .prayer-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            border: 1px dashed var(--accent-gold);
+            margin-bottom: 3rem;
+            font-family: 'Gowun Batang', serif;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .profile-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #ddd;
+            margin-bottom: 1rem;
+            background: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80') center/cover;
+        }
+
+        .benediction {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 2rem;
+        }
+
+        blockquote {
+            border-left: 3px solid var(--accent-gold);
+            padding-left: 20px;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            .header-content h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body data-scripture="로마서 16:3-16">
+
+    <div class="container">
+        <!-- 1. Cinematic Header -->
+        <header>
+            <div class="header-content">
+                <span class="scripture-badge">로마서 16:3-16</span>
+                <h1>진짜 슈퍼스타</h1>
+                <p>로마서 16장, 위대한 복음 드라마의 엔딩 크레딧</p>
+            </div>
+        </header>
+
+        <!-- 2. Intro & Hook -->
+        <article class="intro-section">
+            <h2>엔딩 크레딧에 담긴 하나님의 마음</h2>
+            <p>바울의 동역자 27명의 이름이 나열된 로마서 16장. 단순한 명단처럼 보이지만, 여기에는 바울이 꿈꿨던 '교회 공동체'의 정수가 담겨 있습니다. 여성, 노예, 해방 자유인, 귀족이 함께 어우러진 이 드라마의 주인공은 누구일까요?</p>
+            <div class="divider"></div>
+        </article>
+
+        <!-- 3. Visual Sermon Body -->
+        <!-- Chapter 1 -->
+        <section>
+            <span class="chapter-num">01</span>
+            <h3 class="chapter-title">문안하라: 환대의 초대</h3>
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2959d9c?auto=format&fit=crop&w=800&q=80" alt="환대" class="sermon-img">
+            <p>
+                바울은 끊임없이 <span class="highlight">"문안하라(아스파사스데)"</span>라고 말합니다. 이는 단순한 인사가 아닙니다. 헬라어 원어의 의미는 <strong>'끌어안다', '환영하다', '최고의 경의를 표하다'</strong>는 뜻을 가집니다. 바울은 그 누구도 '엑스트라'로 남길 원치 않았습니다. 한 명 한 명이 하나님의 드라마 속 주인공임을 선포한 것입니다.
+            </p>
+        </section>
+
+        <!-- Chapter 2 -->
+        <section>
+            <span class="chapter-num">02</span>
+            <h3 class="chapter-title">밤하늘의 별들: 무수한 연합</h3>
+            <img src="https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=800&q=80" alt="은하수" class="sermon-img">
+            <div class="story-box">
+                "동티모르의 새벽 산길에서 보았던 하늘은 별이 쏟아질 것 같았습니다. 크고 밝은 별 하나가 아닌, 무수히 반짝이는 별들의 향연이 만드는 경이로움. 우리 교회도 바로 그러한 별들의 향연이어야 합니다."
+            </div>
+            <p>
+                누군가는 북극성처럼 길을 밝히고, 누군가는 이름 없는 작은 별로 존재하지만, 주님이 보시기엔 모두가 우주의 주인공입니다. 하나의 별로는 절대 표현할 수 없는 <span class="highlight">연합의 경이로움</span>이 바로 교회의 아름다움입니다.
+            </p>
+        </section>
+
+        <!-- Chapter 3 -->
+        <section>
+            <span class="chapter-num">03</span>
+            <h3 class="chapter-title">Only One에서 One of Them으로</h3>
+            <p>
+                세상은 유일한 존재인 'Only One'이 되라고 말하지만, 바울은 기꺼이 사랑하는 공동체 중 한 명인 <span class="highlight">'One of Them'</span>이 되기를 선택했습니다. 이것이 그리스도의 낮아지심을 닮은 영성입니다.
+            </p>
+            <blockquote>
+                <strong>로마서 12장 4-5절</strong><br>
+                "우리가 한 몸에 많은 지체를 가졌으나 모든 지체가 같은 기능을 가진 것이 아니니 이와 같이 우리 많은 사람이 그리스도 안에서 한 몸이 되어 서로 지체가 되었느니라"
+            </blockquote>
+            <p>교회는 1등만 기억하는 곳이 아닙니다. 모두가 각자의 역할을 감당하며 한 몸을 이루는 건강한 유기체입니다.</p>
+        </section>
+
+        <!-- 4. Graphic Key Message -->
+        <div class="key-message-card">
+            <div class="key-message-content">
+                <span class="badge">One Message</span>
+                <h2 style="font-family: 'Gowun Batang'; font-size: 1.8rem; margin-bottom: 1rem;">"예수 그리스도 외에 모든 것을 바꿀 수 있는 용기"</h2>
+                <p style="font-size: 1rem; opacity: 0.9;">나의 주장을 내려놓고 공동체가 지향하는 바를 고민하며,<br>그리스도 안에서 서로에게 귀를 기울이는 삶이 진짜 신앙입니다.</p>
+            </div>
+        </div>
+
+        <!-- 5. Action Plan -->
+        <section class="action-plan">
+            <h3 class="chapter-title" style="margin-bottom: 2rem;">오늘의 영적 체크리스트</h3>
+            <div class="action-item">
+                <div class="checkbox">✓</div>
+                <div><strong>진심 어린 문안하기</strong> - 오늘 만나는 지체에게 '아스파사스데'의 마음으로 인사하기.</div>
+            </div>
+            <div class="action-item">
+                <div class="checkbox">✓</div>
+                <div><strong>가족에게 친절하기</strong> - 남에게 베푸는 친절의 절반을 가장 가까운 가족에게 나누기.</div>
+            </div>
+            <div class="action-item">
+                <div class="checkbox">✓</div>
+                <div><strong>입은 닫고 귀는 열기</strong> - 나의 생각보다 '우리'의 생각에 집중하며 경청하는 훈련하기.</div>
+            </div>
+        </section>
+
+        <!-- 6. Prayer & Footer -->
+        <footer>
+            <div class="prayer-box">
+                <p>🙏 <strong>함께 드리는 기도</strong></p>
+                <p style="margin-top: 1rem; font-size: 1.1rem; line-height: 2;">
+                    주님, 우리가 '특별한 하나'가 되려는 욕망을 내려놓고 <br>
+                    '사랑하는 우리 중 하나'가 되게 하옵소서. <br>
+                    서로의 이름을 불러주며 함께 걷는 21세기의 성서가 되어 <br>
+                    세상 속에 그리스도의 사랑을 증거하게 하소서.
+                </p>
+            </div>
+            
+            <div class="profile">
+                <div class="profile-img"></div>
+                <p style="font-weight: 700; color: var(--primary-dark);">라온동행 공동체</p>
+                <p style="font-size: 0.8rem; color: var(--text-muted);">복음으로 함께 걷는 사람들</p>
+            </div>
+
+            <p class="benediction">
+                우리는 "One Team", 함께 걷는 행복한 동행입니다.<br>
+                © 2024 Sermon Visual Magazine. All rights reserved.
+            </p>
+        </footer>
+    </div>
+
+</body>
+</html>
