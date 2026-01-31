@@ -1,5 +1,12 @@
 window.ARCHIVE_DATA = [
   {
+    "fileName": "2026-02-01.html",
+    "relativeURL": "2026/2026-02-01.html",
+    "date": "2026-02-01",
+    "title": "진짜 슈퍼스타 - 가정예배서",
+    "scripture": "로마서 16:3-5"
+  },
+  {
     "fileName": "260125info.html",
     "relativeURL": "2026/260125info.html",
     "date": "2026-01-25",

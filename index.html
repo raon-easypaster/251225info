@@ -161,98 +161,79 @@
             <p class="subtitle">한눈에 보는 주일 말씀, 마음에 새기는 은혜 🖼️</p>
         </header>
 
-        <div class="month-section">
-            <h2 class="month-title">📅 2026년 1월</h2>
-            <div class="grid">
-                
-                 <a href="2026/260125info.html" target="_blank" class="card latest">
-                    <div class="badge-new">NEW ✨</div>
-                    <div>
-                        <div class="card-date">📊 1월 4주 (01.25)</div>
-                        <div class="card-title">로마서 16장 1-2절,<br>일꾼 뵈뵈(롬 32)</div>
-                    </div>
-                    <div class="card-icon">인포그래픽 보기 🔍</div>
-                </a>
-                <a href="2026/260118info.html" target="_blank" class="card latest">
-                    <div>
-                        <div class="card-date">📊 1월 3주 (01.18)</div>
-                        <div class="card-title">로마서 15장 29절,<br>당신이 보고 싶습니다(롬 31)</div>
-                    </div>
-                    <div class="card-icon">인포그래픽 보기 🔍</div>
-                </a>
-
-                <a href="2026/260111info.html" target="_blank" class="card">
-                    <div>
-                        <div class="card-date">📊 1월 2주 (01.11)</div>
-                        <div class="card-title">로마서 15장 1-13절,<br>하나님을 찬양하라(롬 30)</div>
-                    </div>
-                    <div class="card-icon">인포그래픽 보기 🔍</div>
-                </a>
-                
-                <a href="2026/260104info.html" target="_blank" class="card">
-                    <div>
-                        <div class="card-date">🗓️ 1월 1주 (01.04)</div>
-                        <div class="card-title">로마서 14장 18-20절<br>우리가 힘쓸 일(롬 29)</div>
-                    </div>
-                    <div class="card-icon">인포그래픽 보기 🔍</div>
-                </a>
-
-            </div>
+        <div id="archive-content">
+            <!-- Dynamic content will be loaded here -->
         </div>
+    </div>
 
-        <div class="month-section">
-            <h2 class="month-title">📅 2025년 12월</h2>
-            <div class="grid">
+    <!-- Data source -->
+    <script src="data/archiveData.js"></script>
+    <script>
+        function renderArchive() {
+            const container = document.getElementById('archive-content');
+            if (!window.ARCHIVE_DATA || window.ARCHIVE_DATA.length === 0) {
+                container.innerHTML = '<p style="text-align:center; padding: 50px;">데이터를 불러오는 중이거나 데이터가 없습니다.</p>';
+                return;
+            }
 
-                <a href="2025/251231info.html" target="_blank" class="card">
-                    <div>
-                        <div class="card-date">📊 송구영신예배 (12.31)</div>
-                        <div class="card-title">역대상 4장 9-10절,<br>야베스의 기도</div>
+            // Group by Year/Month
+            const groups = {};
+            window.ARCHIVE_DATA.forEach((item, index) => {
+                const date = new Date(item.date);
+                const year = date.getFullYear();
+                const month = date.getMonth() + 1;
+                const groupKey = `${year}년 ${month}월`;
+
+                if (!groups[groupKey]) {
+                    groups[groupKey] = [];
+                }
+                groups[groupKey].push({ ...item, isLatest: index === 0 });
+            });
+
+            // Sort keys descending (assuming data is already sorted, but to be safe)
+            const sortedKeys = Object.keys(groups).sort((a, b) => {
+                const [y1, m1] = a.match(/\d+/g);
+                const [y2, m2] = b.match(/\d+/g);
+                return y2 - y1 || m2 - m1;
+            });
+
+            let html = '';
+            sortedKeys.forEach(key => {
+                html += `
+                    <div class="month-section">
+                        <h2 class="month-title">📅 ${key}</h2>
+                        <div class="grid">
+                            ${groups[key].map(item => renderCard(item)).join('')}
+                        </div>
                     </div>
-                    <div class="card-icon">인포그래픽 보기 🔍</div>
-                </a>
-                
-                <a href="2025/251228info.html" target="_blank" class="card">
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function renderCard(item) {
+            const dateObj = new Date(item.date);
+            const formattedDate = `${(dateObj.getMonth() + 1).toString().padStart(2, '0')}.${dateObj.getDate().toString().padStart(2, '0')}`;
+            
+            // Heuristic for week number (optional, keeping it simple)
+            const weekText = item.date.includes('31') && item.date.includes('12') ? '송구영신예배' : 
+                             item.date.includes('25') && item.date.includes('12') ? '성탄절' : 
+                             `📊 ${dateObj.getMonth() + 1}월`;
+
+            return `
+                <a href="${item.relativeURL}" target="_blank" class="card ${item.isLatest ? 'latest' : ''}">
+                    ${item.isLatest ? '<div class="badge-new">NEW ✨</div>' : ''}
                     <div>
-                        <div class="card-date">🗓️ 12월 4주 (12.28)</div>
-                        <div class="card-title">로마서 13장 11-14절<br>구원이 가까워지고 있다 (롬 28)</div>
+                        <div class="card-date">${weekText} (${formattedDate})</div>
+                        <div class="card-title">${item.title}${item.scripture ? '<br><span style="font-size: 0.9rem; font-weight: normal; color: #666;">' + item.scripture + '</span>' : ''}</div>
                     </div>
-                    <div class="card-icon">인포그래픽 보기 🔍</div>
+                    <div class="card-icon">상세 보기 🔍</div>
                 </a>
-                
-                <a href="2025/251225info.html" target="_blank" class="card">
-                    <div>
-                        <div class="card-date">🗓️ 성탄절 (12.25)</div>
-                        <div class="card-title">미가서 5장 2-3절<br>베들레헴 에브라다야</div>
-                    </div>
-                    <div class="card-icon">인포그래픽 보기 🔍</div>
-                </a>
-                
-                <a href="2025/251214info.html" target="_blank" class="card">
-                    <div>
-                        <div class="card-date">🗓️ 12월 2주 (12.14)</div>
-                        <div class="card-title">로마서 13장 8-10절<br>Love is...사랑이란 (롬 27)</div>
-                    </div>
-                    <div class="card-icon">인포그래픽 보기 🔍</div>
-                </a>
+            `;
+        }
 
-            </div>
-        </div>
-
-        <div class="month-section">
-            <h2 class="month-title">📅 2025년 11월</h2>
-            <div class="grid">
-
-                <a href="2025/251116info.html" target="_blank" class="card">
-                    <div>
-                        <div class="card-date">🗓️ 11월 3주 (11.18)</div>
-                        <div class="card-title">시편 113편<br>하나님은(추수감사주일)</div>
-                    </div>
-                    <div class="card-icon">인포그래픽 보기 🔍</div>
-                </a>
-
-            </div>
-        </div>
-
-    </div> </body>
+        document.addEventListener('DOMContentLoaded', renderArchive);
+    </script>
+</body>
 </html>

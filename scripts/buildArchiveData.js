@@ -27,11 +27,18 @@ function extractMetadata(filePath) {
     const content = fs.readFileSync(filePath, 'utf8');
     const fileName = path.basename(filePath);
 
-    // Date from filename: YYMMDD
+    // Date extraction from filename
     let dateStr = "";
-    const dateMatch = fileName.match(/^(\d{2})(\d{2})(\d{2})/);
-    if (dateMatch) {
-        dateStr = `20${dateMatch[1]}-${dateMatch[2]}-${dateMatch[3]}`;
+    // 1. YYYY-MM-DD.html
+    const longDateMatch = fileName.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (longDateMatch) {
+        dateStr = `${longDateMatch[1]}-${longDateMatch[2]}-${longDateMatch[3]}`;
+    } else {
+        // 2. YYMMDDinfo.html or YYMMDD.html
+        const shortDateMatch = fileName.match(/^(\d{2})(\d{2})(\d{2})/);
+        if (shortDateMatch) {
+            dateStr = `20${shortDateMatch[1]}-${shortDateMatch[2]}-${shortDateMatch[3]}`;
+        }
     }
 
     // Title
@@ -106,10 +113,18 @@ function extractMetadata(filePath) {
     }
 
     if (!scripture) {
-        // 6. scripture-ref class (e.g., 251225info.html)
+        // 7. scripture-ref class (e.g., 251225info.html)
         const scriptureRefMatch = content.match(/class="scripture-ref"[^>]*>([\s\S]*?)(?:<\/span>|<\/div>)/i);
         if (scriptureRefMatch) {
             scripture = cleanText(scriptureRefMatch[1]);
+        }
+    }
+
+    if (!scripture) {
+        // 8. guide-info pattern (Family Worship style)
+        const guideInfoMatch = content.match(/class="guide-info"[^>]*>[\s\S]*?\|\s*([\s\S]*?)(?:<\/div>|<\/span>)/i);
+        if (guideInfoMatch) {
+            scripture = cleanText(guideInfoMatch[1]);
         }
     }
 
