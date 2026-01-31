@@ -47,7 +47,9 @@ function extractMetadata(filePath) {
 
     // Remove prefixes like "비주얼 매거진: "
     title = title.replace(/^비주얼 매거진:\s*/, "");
-    // Remove suffix like " - 2026 송구영신예배"
+    // Remove suffix like " - 라온동행교회", " - 로마서 ...", etc.
+    title = title.replace(/\s*-\s*(?:라온동행교회|인포그래픽|로마서|시편|마태복음|성탄절|송구영신예배).*$/i, "");
+    // Remove year-based suffix if still present
     title = title.replace(/\s*-\s*\d{4}\s+.*$/, "");
 
     // Scripture
@@ -71,7 +73,15 @@ function extractMetadata(filePath) {
     }
 
     if (!scripture) {
-        // 2. scripture-ref class (more specific than subtitle)
+        // 2. scripture-badge class (Newer cinematic style e.g., 260201info.html)
+        const badgeMatch = content.match(/class="scripture-badge"[^>]*>([\s\S]*?)<\/span>/i);
+        if (badgeMatch) {
+            scripture = cleanText(badgeMatch[1]);
+        }
+    }
+
+    if (!scripture) {
+        // 3. scripture-ref class (more specific than subtitle)
         const scriptureRefMatch = content.match(/class="scripture-ref"[^>]*>([\s\S]*?)(?:<\/span>|<\/div>)/i);
         if (scriptureRefMatch) {
             scripture = cleanText(scriptureRefMatch[1]);
@@ -79,7 +89,7 @@ function extractMetadata(filePath) {
     }
 
     if (!scripture) {
-        // 3. SERMON INFOGRAPHIC pattern (e.g., 260111info.html)
+        // 4. SERMON INFOGRAPHIC pattern (e.g., 260111info.html)
         const sermonInfoMatch = content.match(/SERMON INFOGRAPHIC\s*•\s*([\s\S]*?)(?:<\/div>|<\/span>)/i);
         if (sermonInfoMatch) {
             scripture = cleanText(sermonInfoMatch[1]);
@@ -87,7 +97,7 @@ function extractMetadata(filePath) {
     }
 
     if (!scripture) {
-        // 4. subtitle class (e.g., 260118info.html)
+        // 5. subtitle class (e.g., 260118info.html)
         const subtitleMatch = content.match(/class="subtitle"[^>]*>([\s\S]*?)<\/div>/i);
         if (subtitleMatch) {
             scripture = cleanText(subtitleMatch[1]);
@@ -95,7 +105,7 @@ function extractMetadata(filePath) {
     }
 
     if (!scripture) {
-        // 5. bible-box pattern (older files)
+        // 6. bible-box pattern (older files)
         const bibleBoxMatch = content.match(/<div class="bible-box">[\s\S]*?<p>([\s\S]*?)<\/p>/i);
         if (bibleBoxMatch) {
             scripture = cleanText(bibleBoxMatch[1]);
@@ -105,18 +115,10 @@ function extractMetadata(filePath) {
     }
 
     if (!scripture) {
-        // 6. fa-book-open icon pattern (e.g., 251231info.html)
+        // 7. fa-book-open icon pattern (e.g., 251231info.html)
         const bookIconMatch = content.match(/<i class="fase? fa-book-open[^>]*><\/i>\s*([\s\S]*?)(?:<\/span>|<\/div>)/i);
         if (bookIconMatch) {
             scripture = cleanText(bookIconMatch[1]);
-        }
-    }
-
-    if (!scripture) {
-        // 7. scripture-ref class (e.g., 251225info.html)
-        const scriptureRefMatch = content.match(/class="scripture-ref"[^>]*>([\s\S]*?)(?:<\/span>|<\/div>)/i);
-        if (scriptureRefMatch) {
-            scripture = cleanText(scriptureRefMatch[1]);
         }
     }
 

@@ -1,10 +1,10 @@
 window.ARCHIVE_DATA = [
   {
-    "fileName": "2026-02-01.html",
-    "relativeURL": "2026/2026-02-01.html",
+    "fileName": "260201info.html",
+    "relativeURL": "2026/260201info.html",
     "date": "2026-02-01",
-    "title": "진짜 슈퍼스타 - 가정예배서",
-    "scripture": "로마서 16:3-5"
+    "title": "진짜 슈퍼스타",
+    "scripture": "로마서 16:3-16"
   },
   {
     "fileName": "260125info.html",
@@ -24,14 +24,14 @@ window.ARCHIVE_DATA = [
     "fileName": "260111info.html",
     "relativeURL": "2026/260111info.html",
     "date": "2026-01-11",
-    "title": "로마서 15장 설교 인포그래픽 - 라온동행교회",
+    "title": "로마서 15장 설교 인포그래픽",
     "scripture": "ROMANS 15:1-13"
   },
   {
     "fileName": "260104info.html",
     "relativeURL": "2026/260104info.html",
     "date": "2026-01-04",
-    "title": "로마서 14장: 우리가 힘쓸 일 - 라온동행교회",
+    "title": "로마서 14장: 우리가 힘쓸 일",
     "scripture": ""
   },
   {
@@ -45,7 +45,7 @@ window.ARCHIVE_DATA = [
     "fileName": "251228info.html",
     "relativeURL": "2025/251228info.html",
     "date": "2025-12-28",
-    "title": "빛의 갑옷을 입으라 - 라온동행교회 인포그래픽",
+    "title": "빛의 갑옷을 입으라",
     "scripture": ""
   },
   {
