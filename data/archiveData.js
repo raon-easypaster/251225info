@@ -1,5 +1,12 @@
 window.ARCHIVE_DATA = [
   {
+    "fileName": "260208info.html",
+    "relativeURL": "2026/260208info.html",
+    "date": "2026-02-08",
+    "title": "그들에게서 떠나라",
+    "scripture": "로마서 16장 17-20절"
+  },
+  {
     "fileName": "260201info.html",
     "relativeURL": "2026/260201info.html",
     "date": "2026-02-01",
@@ -24,14 +31,14 @@ window.ARCHIVE_DATA = [
     "fileName": "260111info.html",
     "relativeURL": "2026/260111info.html",
     "date": "2026-01-11",
-    "title": "로마서 15장 설교 인포그래픽",
+    "title": "설교 인포그래픽",
     "scripture": "ROMANS 15:1-13"
   },
   {
     "fileName": "260104info.html",
     "relativeURL": "2026/260104info.html",
     "date": "2026-01-04",
-    "title": "로마서 14장: 우리가 힘쓸 일",
+    "title": "우리가 힘쓸 일",
     "scripture": ""
   },
   {
