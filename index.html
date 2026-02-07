@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>라온동행교회 설교 인포그래픽</title>
+    <title>라온동행교회 설교 인포그래픽 아카이브</title>
     <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
     <style>
         :root {
@@ -24,7 +24,7 @@
         }
         .container {
             max-width: 800px;
-            margin: 0 auto; /* 중앙 정렬 핵심 */
+            margin: 0 auto;
         }
 
         header {
@@ -57,6 +57,9 @@
             font-size: 1.4rem;
             color: var(--primary-color);
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .grid {
@@ -121,9 +124,17 @@
             font-size: 1.25rem;
             font-weight: 700;
             line-height: 1.45;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             word-break: keep-all;
             color: #2c3e50;
+        }
+
+        .card-scripture {
+            font-size: 0.9rem;
+            font-weight: normal;
+            color: #666;
+            margin-bottom: 20px;
+            display: block;
         }
         
         .card-icon {
@@ -166,19 +177,56 @@
         </div>
     </div>
 
-    <!-- Data source -->
-    <script src="data/archiveData.js"></script>
     <script>
+        /**
+         * [필독] 새로운 설교를 추가하는 방법:
+         * 아래 ARCHIVE_DATA 배열의 맨 위에 새로운 정보를 추가하세요.
+         * 1. date: 'YYYY-MM-DD' 형식 (예: '2026-02-08')
+         * 2. title: 설교 제목
+         * 3. scripture: 성경 구절
+         * 4. relativeURL: 파일이 있는 경로 (예: '2026/260208info.html')
+         */
+        const ARCHIVE_DATA = [
+            {
+                date: '2026-02-08',
+                title: '하나님의 전신갑주를 입으라',
+                scripture: '에베소서 6:10-20',
+                relativeURL: '2026/260208info.html'
+            },
+            {
+                date: '2026-02-01',
+                title: '믿음의 경주를 완주하라',
+                scripture: '히브리서 12:1-2',
+                relativeURL: '2026/260201info.html'
+            },
+            {
+                date: '2025-12-25',
+                title: '가장 낮은 곳에 임하신 왕',
+                scripture: '누가복음 2:1-14',
+                relativeURL: '2025/251225info.html'
+            },
+            {
+                date: '2025-11-23',
+                title: '범사에 감사하라',
+                scripture: '데살로니가전서 5:18',
+                relativeURL: '2025/251123info.html'
+            }
+        ];
+
         function renderArchive() {
             const container = document.getElementById('archive-content');
-            if (!window.ARCHIVE_DATA || window.ARCHIVE_DATA.length === 0) {
-                container.innerHTML = '<p style="text-align:center; padding: 50px;">데이터를 불러오는 중이거나 데이터가 없습니다.</p>';
+            
+            if (!ARCHIVE_DATA || ARCHIVE_DATA.length === 0) {
+                container.innerHTML = '<p style="text-align:center; padding: 50px;">등록된 데이터가 없습니다.</p>';
                 return;
             }
 
-            // Group by Year/Month
+            // 날짜순 정렬 (최신순)
+            const sortedData = [...ARCHIVE_DATA].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            // 연도/월별 그룹화
             const groups = {};
-            window.ARCHIVE_DATA.forEach((item, index) => {
+            sortedData.forEach((item, index) => {
                 const date = new Date(item.date);
                 const year = date.getFullYear();
                 const month = date.getMonth() + 1;
@@ -187,18 +235,20 @@
                 if (!groups[groupKey]) {
                     groups[groupKey] = [];
                 }
+                // 첫 번째 아이템(최신작)에 isLatest 부여
                 groups[groupKey].push({ ...item, isLatest: index === 0 });
             });
 
-            // Sort keys descending (assuming data is already sorted, but to be safe)
-            const sortedKeys = Object.keys(groups).sort((a, b) => {
+            // 그룹 렌더링
+            let html = '';
+            // 그룹 키(연도/월) 정렬하여 출력
+            const groupKeys = Object.keys(groups).sort((a, b) => {
                 const [y1, m1] = a.match(/\d+/g);
                 const [y2, m2] = b.match(/\d+/g);
                 return y2 - y1 || m2 - m1;
             });
 
-            let html = '';
-            sortedKeys.forEach(key => {
+            groupKeys.forEach(key => {
                 html += `
                     <div class="month-section">
                         <h2 class="month-title">📅 ${key}</h2>
@@ -216,17 +266,18 @@
             const dateObj = new Date(item.date);
             const formattedDate = `${(dateObj.getMonth() + 1).toString().padStart(2, '0')}.${dateObj.getDate().toString().padStart(2, '0')}`;
             
-            // Heuristic for week number (optional, keeping it simple)
-            const weekText = item.date.includes('31') && item.date.includes('12') ? '송구영신예배' : 
-                             item.date.includes('25') && item.date.includes('12') ? '성탄절' : 
-                             `📊 ${dateObj.getMonth() + 1}월`;
+            // 특수 기념일 처리
+            let weekText = `${dateObj.getMonth() + 1}월 주일말씀`;
+            if (item.date.includes('12-25')) weekText = '🎄 성탄절';
+            if (item.date.includes('12-31')) weekText = '🙏 송구영신';
 
             return `
                 <a href="${item.relativeURL}" target="_blank" class="card ${item.isLatest ? 'latest' : ''}">
                     ${item.isLatest ? '<div class="badge-new">NEW ✨</div>' : ''}
                     <div>
                         <div class="card-date">${weekText} (${formattedDate})</div>
-                        <div class="card-title">${item.title}${item.scripture ? '<br><span style="font-size: 0.9rem; font-weight: normal; color: #666;">' + item.scripture + '</span>' : ''}</div>
+                        <div class="card-title">${item.title}</div>
+                        ${item.scripture ? `<span class="card-scripture">${item.scripture}</span>` : ''}
                     </div>
                     <div class="card-icon">상세 보기 🔍</div>
                 </a>
