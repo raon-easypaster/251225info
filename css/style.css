@@ -1,0 +1,145 @@
+:root {
+    --primary-color: #154c79;
+    --accent-color: #2b7bc6;
+    --bg-color: #f0f4f8;
+    --highlight-bg: #eef7ff;
+    --highlight-border: #5fa8eb;
+}
+
+body {
+    font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    line-height: 1.6;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+    padding: 40px 0;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(21, 76, 121, 0.08);
+    border-top: 5px solid var(--primary-color);
+}
+h1 { 
+    margin: 0; 
+    color: var(--primary-color); 
+    font-size: 1.8rem; 
+    letter-spacing: -0.5px; 
+    font-weight: 800;
+}
+p.subtitle { 
+    color: #5d758a;
+    margin-top: 12px; 
+    font-size: 1.05rem; 
+}
+
+.month-section { margin-bottom: 50px; }
+.month-title {
+    border-bottom: 2px solid #ccdbe8;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #e1e8ed;
+    border-radius: 16px;
+    padding: 25px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(21, 76, 121, 0.12);
+    border-color: var(--accent-color);
+}
+
+.card.latest {
+    background-color: var(--highlight-bg);
+    border: 2px solid var(--highlight-border);
+}
+
+.badge-new {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #e53935;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    animation: bounce 2s infinite;
+}
+
+.card-date {
+    font-size: 0.9rem;
+    color: #78909c;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.card.latest .card-date {
+    color: var(--accent-color);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 25px;
+    word-break: keep-all;
+    color: #2c3e50;
+}
+
+.card-icon {
+    align-self: flex-end;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    background: #f1f6fa;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+.card:hover .card-icon {
+    background: var(--primary-color);
+    color: white;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-5px);}
+    60% {transform: translateY(-3px);}
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 1.5rem; }
+    .container { padding: 0 10px; }
+}
